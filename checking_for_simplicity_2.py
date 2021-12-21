@@ -3,7 +3,7 @@ import random
 n = int(input("Введите число для проверки: "))
 
 
-def calculateJacobian(a, n):
+def calculateJacobian(a, n):  # Вычисление значения символа Якоби 
     if (a == 0):
         return 0
 
@@ -63,25 +63,22 @@ def modulo(base, exponent, mod):
 
     return x % mod
 
+def simp(n):
+    for i in range(1, 100):
+        if n % 2 == 0:
+           return False
+        a = random.randint(2, n - 1)
+        f = math.gcd(n, a)
+        if f > 1:
+            return False
+        calculateJacobian(a, n)
 
-for i in range(1, 100):
-    if n % 2 == 0:
-        print(False)
-        break
-    a = random.randint(2, n - 1)
-    f = math.gcd(n, a)
-    if f > 1:
-        print("False")
-        break
-    calculateJacobian(a, n)
+        jacobian = (n + calculateJacobian(a, n)) % n
 
-    jacobian = (n + calculateJacobian(a, n)) % n
+        mod = modulo(a, (n - 1) / 2, n)
 
-    mod = modulo(a, (n - 1) / 2, n)
-
-    if (jacobian == 0 or mod != jacobian):
-        print(False)
-        break
-    else:
-        print("True")
-        break
+        if (jacobian == 0 or mod != jacobian):
+            return False
+        else:
+            return True
+print(simp(n))
