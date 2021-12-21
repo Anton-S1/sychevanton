@@ -63,12 +63,12 @@ def modulo(base, exponent, mod):
 
     return x % mod
 
-def check(n):
+def check(n):  # проверяем на простоту
     for i in range(1, 100):
         if n % 2 == 0:
            return False
-        a = random.randint(2, n - 1)
-        f = math.gcd(n, a)
+        a = random.randint(2, n - 1)  
+        f = math.gcd(n, a)  # ищем общие делители числа a и n
         if f > 1:
             return False
         calculateJacobian(a, n)
