@@ -63,7 +63,7 @@ def modulo(base, exponent, mod):
 
     return x % mod
 
-def simp(n):
+def check(n):
     for i in range(1, 100):
         if n % 2 == 0:
            return False
@@ -81,4 +81,4 @@ def simp(n):
             return False
         else:
             return True
-print(simp(n))
+print(check(n))
