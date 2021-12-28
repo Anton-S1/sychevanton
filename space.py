@@ -1,28 +1,33 @@
 import random
-n = random.randint(-1, 1)
-class Operation:
-    def sum(self, x, y):
-        print(abs(x + y))
+class Cplx:
+    def __init__(self, r, i):
+        self.r = r
+        self.i = i
 
-    def neg(self, x, y):
-        print(x - y * (-1)**n)
+    def __str__(self):
+        return "({}, {})".format(self.r, self.i)
 
-    def multiplication(self, x, y):
-        print(x ** y)
+    def __add__(self, other):
+        return Cplx(self.r + other.r, self.i + other.i)
 
-    def division(self, x, y):
-        if y == 0:
-            return "Деление на нуль"
-        print((x / y).imag)
+    def __mul__(self, other):
+        return Cplx((self.r * other.r - self.i * other.i),  (self.r * self.i + other.r * other.i))
 
-    def degree(self, x, y):
-        print(pow(x + y, 0 ))
+    def __sub__(self, other):
+        return Cplx(self.r - other.r, self.i - other.i)
 
-x = complex(random.randint(-10, 10), random.randint(-10, 11))
-y = complex(random.randint(-18, 14), random.randint(-15, 12))
-obj1 = Operation()
-obj1.sum(x, y)
-obj1.neg(x, y)
-obj1.multiplication(x, y)
-obj1.division(x, y)
-obj1.degree(x, y)
+    def __truediv__(self, other):
+        if  other.r ** 2 + other.i ** 2 != 0:
+            return Cplx((self.r * other.r + self.i * other.i)/(other.r ** 2 + other.i ** 2), (other.r * self.i - self.r * other.i)/(other.r ** 2 + other.i ** 2))
+
+        else: return 'Делить на нуль нельзя'
+
+a = Cplx(random.randint(-1000,1000),random.randint(-1000,1000))
+b = Cplx(random.randint(-1000,1000), random.randint(-1000,1000))
+
+e_add = Cplx(0, 0)                     # Нейтральное по сложению
+e_sub = Cplx(1, 0)                     # Нейтральное по умножению
+print("Сложение:",a + b)
+print("Разность:",a - b)
+print("Умножение:",a * b)
+print("Деление:",a / b)
