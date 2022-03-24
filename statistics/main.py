@@ -1,7 +1,7 @@
 import pandas as pd
 from scipy import stats
 import matplotlib.pyplot as plt
-df = pd.read_csv('D.csv')
+df = pd.read_csv('temperature.csv')
 
 df.plot(kind='bar')
 
