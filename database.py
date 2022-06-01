@@ -19,3 +19,6 @@ if sql.fetchone() is None:
     db.commit()
 else:
     print('Студент уже записан')
+    
+for value in sql.execute("SELECT * FROM students"):
+    print(value)
