@@ -1,4 +1,5 @@
 N = int(input())
+from module_2 import get_prime_factors
 def is_prime(N):  # Проверим через деление до корня n
     if N < 2:
         return False
@@ -9,7 +10,6 @@ def is_prime(N):  # Проверим через деление до корня n
         return True
 
 if is_prime(N) == False:
-    from mod import get_prime_factors
     print(get_prime_factors(N))
 else:
     print("Не разложимо")

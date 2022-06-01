@@ -9,4 +9,3 @@ def get_prime_factors(N):  # Функция раскладывает числа 
             divisor += 1
     return factors
 print(get_prime_factors)
-
