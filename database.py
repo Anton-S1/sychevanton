@@ -8,6 +8,9 @@ sql.execute("""CREATE TABLE IF NOT EXISTS students (
  )""")
 db.commit()
 
+for value in sql.execute("SELECT * FROM students"):
+    print(value)
+    
 student_name = input('Имя студента: ')
 student_course = input('Курс: ')
 student_score = input('Средний балл:')
@@ -20,5 +23,3 @@ if sql.fetchone() is None:
 else:
     print('Студент уже записан')
     
-for value in sql.execute("SELECT * FROM students"):
-    print(value)
